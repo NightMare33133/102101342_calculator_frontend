@@ -223,7 +223,6 @@ const fetchData = () => {
     console.log(data);
     rate_msg.value = data
 
-
   });
 }
 onMounted(() => {

@@ -118,51 +118,80 @@ onMounted(() => {
 
 
 <template>
-  <div class="calculator">
-    <div class="result" style="grid-area: result">
-      {{ display_equation }}
-    </div>
+  <table>
+    <tr>
+      <td>
+        <div class="calculator">
+          <div class="result" style="grid-area: result">
+            {{ display_equation }}
+          </div>
 
-    <button style="grid-area: clear" @click="clear">C</button>
-    <button style="grid-area: percent" @click="append('%','%')">%</button>
-    <button style="grid-area: back" @click="back">←</button>
-    <button style="grid-area: add" @click="append('+','+')">+</button>
-    <button style="grid-area: subtract" @click="append('-','-')">-</button>
-    <button style="grid-area: multiply" @click="append('*','×')">×</button>
-    <button style="grid-area: divide" @click="append('/','÷')">÷</button>
-    <button style="grid-area: equal" @click="calculate">=</button>
-    <button style="grid-area: sin" @click="append('sin','sin')">sin</button>
-    <button style="grid-area: cos" @click="append('cos','cos')">cos</button>
-    <button style="grid-area: tan" @click="append('tan','tan')">tan</button>
-    <button style="grid-area: Left_bracket" @click="append('(','(')">(</button>
-    <button style="grid-area: Right_bracket" @click="append(')',')')">)</button>
-    <button style="grid-area: Log10" @click="append('log10','log10')">log10</button>
-    <button style="grid-area: Ans" @click="Ans">Ans</button>
-    <button style="grid-area: π" @click="append('pi','π')">π</button>
-    <button style="grid-area: √" @click="append('sqrt','sqrt')">√</button>
-    <button style="grid-area: pow" @click="append('**','^')">^</button>
+          <button style="grid-area: clear" @click="clear">C</button>
+          <button style="grid-area: percent" @click="append('%','%')">%</button>
+          <button style="grid-area: back" @click="back">←</button>
+          <button style="grid-area: add" @click="append('+','+')">+</button>
+          <button style="grid-area: subtract" @click="append('-','-')">-</button>
+          <button style="grid-area: multiply" @click="append('*','×')">×</button>
+          <button style="grid-area: divide" @click="append('/','÷')">÷</button>
+          <button style="grid-area: equal" @click="calculate">=</button>
+          <button style="grid-area: sin" @click="append('sin','sin')">sin</button>
+          <button style="grid-area: cos" @click="append('cos','cos')">cos</button>
+          <button style="grid-area: tan" @click="append('tan','tan')">tan</button>
+          <button style="grid-area: Left_bracket" @click="append('(','(')">(</button>
+          <button style="grid-area: Right_bracket" @click="append(')',')')">)</button>
+          <button style="grid-area: Log10" @click="append('log10','log10')">log10</button>
+          <button style="grid-area: Ans" @click="Ans">Ans</button>
+          <button style="grid-area: π" @click="append('pi','π')">π</button>
+          <button style="grid-area: √" @click="append('sqrt','sqrt')">√</button>
+          <button style="grid-area: pow" @click="append('**','^')">^</button>
 
 
-    <button style="grid-area: number-1" @click="append(1,1)">1</button>
-    <button style="grid-area: number-2" @click="append(2,2)">2</button>
-    <button style="grid-area: number-3" @click="append(3,3)">3</button>
-    <button style="grid-area: number-4" @click="append(4,4)">4</button>
-    <button style="grid-area: number-5" @click="append(5,5)">5</button>
-    <button style="grid-area: number-6" @click="append(6,6)">6</button>
-    <button style="grid-area: number-7" @click="append(7,7)">7</button>
-    <button style="grid-area: number-8" @click="append(8,8)">8</button>
-    <button style="grid-area: number-9" @click="append(9,9)">9</button>
-    <button style="grid-area: number-0" @click="append(0,0)">0</button>
+          <button style="grid-area: number-1" @click="append(1,1)">1</button>
+          <button style="grid-area: number-2" @click="append(2,2)">2</button>
+          <button style="grid-area: number-3" @click="append(3,3)">3</button>
+          <button style="grid-area: number-4" @click="append(4,4)">4</button>
+          <button style="grid-area: number-5" @click="append(5,5)">5</button>
+          <button style="grid-area: number-6" @click="append(6,6)">6</button>
+          <button style="grid-area: number-7" @click="append(7,7)">7</button>
+          <button style="grid-area: number-8" @click="append(8,8)">8</button>
+          <button style="grid-area: number-9" @click="append(9,9)">9</button>
+          <button style="grid-area: number-0" @click="append(0,0)">0</button>
 
-    <button style="grid-area: dot" @click="append('.','.')">.</button>
-  </div>
-  <div class="history">
-    历史记录：<br>
-    <label v-for="msg in equation2">
-      <span>第{{msg.id}}条记录:   {{ msg.result }}</span><br>
-    </label>
-  </div>
+          <button style="grid-area: dot" @click="append('.','.')">.</button>
+        </div>
+      </td>
+      <td>
+        <div class="history" style=" border-radius: 20px;background-color: #eee;width: 450px;
+        opacity:0.8;padding: 24px;
+        background-image: linear-gradient(to top, #fad0c4 0%, #fad0c4 1%, #ffd1ff 100%);">
+          历史记录：<br>
+          <label v-for="msg in equation2">
+            <span> {{ msg.result }}</span><br>
+          </label>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <footer>
+    <hr style="width: 80%;
+    margin: 10px auto;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      cyan,
+      rgba(0, 0, 0, 0)
+    );"/>
+  </footer>
+  <table style="margin: 0px auto;">
 
+    <tr>
+      <td>
+        <img  src="@/assets/银狼.png" width="125" height="125"/>
+      </td>
+    </tr>
+  </table>
+  <h5 align="center">我来填充底部</h5>
   <RouterView />
 </template>
 
